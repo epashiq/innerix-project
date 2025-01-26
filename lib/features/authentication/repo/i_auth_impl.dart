@@ -67,13 +67,11 @@ Future<Either<MainFailure, Unit>> login(String email, String password) async {
     if (response.statusCode == 200 && response.data['status'] == true) {
       log('Login successful');
 
-      // Extract the access token from the response
       final String accessToken = response.data['access_token'];
       final String refreshToken = response.data['refresh_token'];
       log('Access Token: $accessToken');
       log('Refresh Token: $refreshToken');
 
-      // Save tokens to SharedPreferences
       final prefs = await SharedPreferences.getInstance();
       final isAccessTokenSaved = await prefs.setString('access_token', accessToken);
       final isRefreshTokenSaved = await prefs.setString('refresh_token', refreshToken);
@@ -84,7 +82,6 @@ Future<Either<MainFailure, Unit>> login(String email, String password) async {
         log('Failed to save tokens to SharedPreferences');
       }
 
-      // Optionally save user email or other details
       await prefs.setString('email', email);
 
       log('Login details saved to SharedPreferences');

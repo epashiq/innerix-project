@@ -33,16 +33,15 @@ class _AppRootState extends State<AppRoot> {
         },
         items: const [
           BottomNavigationBarItem(
-            tooltip: "Home",
-            icon: Icon(Icons.home),
-            activeIcon: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [Icon(Icons.home)],
-            ),
-            label: ''
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.home),label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.home),label: ''),
+              tooltip: "Home",
+              icon: Icon(Icons.home),
+              activeIcon: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [Icon(Icons.home)],
+              ),
+              label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
         ],
       ),
     );
