@@ -3,6 +3,7 @@ import 'package:innerix_project/features/app_root/presentation/app_root.dart';
 import 'package:innerix_project/features/authentication/data/i_auth_facade.dart';
 import 'package:innerix_project/features/authentication/presentation/provider/auth_provider.dart';
 import 'package:innerix_project/features/authentication/presentation/view/login_screen.dart';
+import 'package:innerix_project/features/category/presentation/provider/category_provider.dart';
 import 'package:innerix_project/features/home/data/i_home_facde.dart';
 import 'package:innerix_project/features/home/presentation/provider.dart/home_provider.dart';
 import 'package:innerix_project/features/profile/data/model/i_profile_facade.dart';
@@ -34,7 +35,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
             create: (_) => AuthProvider(iAuthFacade: sl<IAuthFacade>())),
              ChangeNotifierProvider(
-            create: (_) => ProfileProvider(sl<IProfileFacade>()))
+            create: (_) => ProfileProvider(sl<IProfileFacade>())),
+             ChangeNotifierProvider(
+            create: (_) => CategoryProvider())
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,

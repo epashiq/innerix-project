@@ -6,4 +6,12 @@ abstract class IProfileFacade {
   Future<Either<MainFailure,User>> fetchUser()async{
     throw UnimplementedError('fetchUser() not implemented');
   }
+
+   Future<Either<MainFailure, User>> editProfile({
+    required String name,
+    required String email,
+    required String phone,
+  }) async {
+    throw UnimplementedError('editProfile() unimplemented');
+  }
 }

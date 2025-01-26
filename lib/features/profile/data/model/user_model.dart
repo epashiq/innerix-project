@@ -1,45 +1,38 @@
-// class LoginResponse {
-//   final bool status;
-//   final String message;
-//   final User user;
-//   final String accessToken;
-//   final String refreshToken;
+class Profile {
+  final bool status;
+  final String message;
+  final User user;
+  final String accessToken;
+  final String refreshToken;
 
-//   LoginResponse({
-//     required this.status,
-//     required this.message,
-//     required this.user,
-//     required this.accessToken,
-//     required this.refreshToken,
-//   });
+  Profile({
+    required this.status,
+    required this.message,
+    required this.user,
+    required this.accessToken,
+    required this.refreshToken,
+  });
 
-//   // Factory method to create a LoginResponse object from JSON
-//   factory LoginResponse.fromJson(Map<String, dynamic> json) {
-//     return LoginResponse(
-//       status: json['status'] ?? false,
-//       message: json['message'] ?? '',
-//       user: User.fromJson(json['user']),
-//       accessToken: json['access_token'] ?? '',
-//       refreshToken: json['refresh_token'] ?? '',
-//     );
-//   }
+  factory Profile.fromJson(Map<String, dynamic> json) {
+    return Profile(
+      status: json['status'] ?? false,
+      message: json['message'] ?? '',
+      user: User.fromJson(json['user']),
+      accessToken: json['access_token'] ?? '',
+      refreshToken: json['refresh_token'] ?? '',
+    );
+  }
 
-//   // Method to convert a LoginResponse object to JSON
-//   Map<String, dynamic> toJson() {
-//     return {
-//       'status': status,
-//       'message': message,
-//       'user': user.toJson(),
-//       'access_token': accessToken,
-//       'refresh_token': refreshToken,
-//     };
-//   }
-
-//   @override
-//   String toString() {
-//     return 'LoginResponse(status: $status, message: $message, user: $user, accessToken: $accessToken, refreshToken: $refreshToken)';
-//   }
-// }
+  Map<String, dynamic> toJson() {
+    return {
+      'status': status,
+      'message': message,
+      'user': user.toJson(),
+      'access_token': accessToken,
+      'refresh_token': refreshToken,
+    };
+  }
+}
 
 class User {
   final int userId;
@@ -51,7 +44,7 @@ class User {
   final int userRole;
   final String gender;
   final int age;
-  final String? roles;
+  final dynamic roles;
 
   User({
     required this.userId,
@@ -66,7 +59,6 @@ class User {
     this.roles,
   });
 
-  // Factory method to create a User object from JSON
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       userId: json['user_id'] ?? 0,
@@ -82,7 +74,6 @@ class User {
     );
   }
 
-  // Method to convert a User object to JSON
   Map<String, dynamic> toJson() {
     return {
       'user_id': userId,
@@ -97,9 +88,4 @@ class User {
       'roles': roles,
     };
   }
-
-  // @override
-  // String toString() {
-  //   return 'User(userId: $userId, shopId: $shopId, email: $email, phoneNumber: $phoneNumber, name: $name, profileImage: $profileImage, userRole: $userRole, gender: $gender, age: $age, roles: $roles)';
-  // }
 }

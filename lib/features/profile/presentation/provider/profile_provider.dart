@@ -18,6 +18,13 @@ class ProfileProvider extends ChangeNotifier {
   String? _errorMessage;
   String? get errorMessage => _errorMessage;
 
+   final nameController =
+        TextEditingController();
+    final emailController =
+        TextEditingController();
+    final phoneController =
+        TextEditingController();
+
   Future<void> fetchUserProfile() async {
     _isLoading = true;
     _errorMessage = null;
@@ -33,6 +40,31 @@ class ProfileProvider extends ChangeNotifier {
       (user) {
         _user = user;
         log('success to load user');
+      },
+    );
+
+    _isLoading = false;
+    notifyListeners();
+  }
+
+  Future<void> updateUserProfile(
+      String name, String email, String phone) async {
+    _isLoading = true;
+    notifyListeners();
+
+    final result = await iProfileFacade.editProfile(
+      name: name,
+      email: email,
+      phone: phone,
+    );
+
+    result.fold(
+      (failure) {
+        _errorMessage = failure.errorMessage;
+      },
+      (updatedUser) {
+        _user = updatedUser;
+        _errorMessage = null;
       },
     );
 

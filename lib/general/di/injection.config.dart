@@ -14,6 +14,8 @@ import 'package:injectable/injectable.dart' as _i526;
 
 import '../../features/authentication/data/i_auth_facade.dart' as _i416;
 import '../../features/authentication/repo/i_auth_impl.dart' as _i324;
+import '../../features/category/data/i_category_facade.dart' as _i165;
+import '../../features/category/repo/i_category_impl.dart' as _i766;
 import '../../features/home/data/i_home_facde.dart' as _i573;
 import '../../features/home/repo/i_home_impl.dart' as _i105;
 import '../../features/profile/data/model/i_profile_facade.dart' as _i558;
@@ -35,6 +37,8 @@ _i174.GetIt init(
   gh.lazySingleton<_i361.Dio>(() => injectableModule.dio());
   gh.lazySingleton<_i558.IProfileFacade>(
       () => _i211.IProfileImpl(gh<_i361.Dio>()));
+  gh.lazySingleton<_i165.ICategoryFacade>(
+      () => _i766.ICategoryImpl(dio: gh<_i361.Dio>()));
   gh.lazySingleton<_i573.IHomeFacde>(
       () => _i105.IHomeImpl(dio: gh<_i361.Dio>()));
   gh.lazySingleton<_i416.IAuthFacade>(
